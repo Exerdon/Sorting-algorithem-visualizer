@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <title>SortLab — Sorting Algorithm Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">INTERACTIVE DSA PLAYGROUND</p>
+        <h1>Sorting Algorithm <span>Visualizer</span></h1>
+        <p class="subtitle">Watch six classic algorithms turn chaos into order.</p>
+      </div>
+      <div class="settings">
+        <label class="setting" for="size">
+          <span>Elements <strong id="sizeLabel">50</strong></span>
+          <input id="size" type="range" min="12" max="100" value="50">
+        </label>
+        <label class="setting" for="speed">
+          <span>Speed <strong id="speedLabel">50%</strong></span>
+          <input id="speed" type="range" min="1" max="100" value="50">
+        </label>
+      </div>
+    </header>
+
+    <section class="toolbar" aria-label="Sorting controls">
+      <label class="select-wrap">
+        <span class="sr-only">Sorting algorithm</span>
+        <select id="algorithm">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+          <option value="heap">Heap Sort</option>
+        </select>
+      </label>
+      <div class="buttons">
+        <button id="start" class="btn start">▶ <span>Start</span></button>
+        <button id="pause" class="btn pause" disabled>Ⅱ <span>Pause</span></button>
+        <button id="reset" class="btn reset">↺ <span>Reset</span></button>
+        <button id="shuffle" class="btn shuffle">⤨ <span>New array</span></button>
+      </div>
+    </section>
+
+    <section class="visual-panel">
+      <div class="visual-top">
+        <div>
+          <h2 id="visualTitle">Bubble Sort</h2>
+          <p id="status" aria-live="polite">Ready — press Start to begin.</p>
+        </div>
+        <span class="pill">ASCENDING ORDER</span>
+      </div>
+      <div id="bars" class="bars" role="img" aria-label="Array visualization"></div>
+      <div class="panel-bottom">
+        <div class="legend">
+          <span><i class="swatch normal"></i>Unsorted</span>
+          <span><i class="swatch compare"></i>Comparing</span>
+          <span><i class="swatch swap"></i>Swapping / pivot</span>
+          <span><i class="swatch done"></i>Sorted</span>
+        </div>
+        <div class="metrics">
+          <article class="metric"><span>Comparisons</span><strong id="comparisons">0</strong></article>
+          <article class="metric"><span>Swaps / writes</span><strong id="moves">0</strong></article>
+          <article class="metric"><span>Array size</span><strong id="arraySize">50</strong></article>
+          <article class="metric"><span>Time complexity</span><strong id="complexity">O(n²)</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="algorithm-grid" aria-label="Algorithm explanations">
+      <article class="algo-card bubble active" data-card="bubble">
+        <h3>Bubble Sort</h3><p>Repeatedly compares adjacent values and swaps out-of-order pairs.</p>
+        <div><span>Average time</span><strong>O(n²)</strong></div><div><span>Extra space</span><strong>O(1)</strong></div>
+      </article>
+      <article class="algo-card selection" data-card="selection">
+        <h3>Selection Sort</h3><p>Finds the minimum value in the unsorted section and moves it to the front.</p>
+        <div><span>Average time</span><strong>O(n²)</strong></div><div><span>Extra space</span><strong>O(1)</strong></div>
+      </article>
+      <article class="algo-card insertion" data-card="insertion">
+        <h3>Insertion Sort</h3><p>Builds a sorted section by inserting each new value into its position.</p>
+        <div><span>Average time</span><strong>O(n²)</strong></div><div><span>Extra space</span><strong>O(1)</strong></div>
+      </article>
+      <article class="algo-card merge" data-card="merge">
+        <h3>Merge Sort</h3><p>Divides the array, sorts each half recursively, then merges them.</p>
+        <div><span>Average time</span><strong>O(n log n)</strong></div><div><span>Extra space</span><strong>O(n)</strong></div>
+      </article>
+      <article class="algo-card quick" data-card="quick">
+        <h3>Quick Sort</h3><p>Partitions values around a pivot and sorts the smaller sections.</p>
+        <div><span>Average time</span><strong>O(n log n)</strong></div><div><span>Extra space</span><strong>O(log n)*</strong></div>
+      </article>
+      <article class="algo-card heap" data-card="heap">
+        <h3>Heap Sort</h3><p>Builds a max heap and repeatedly moves its maximum to the end.</p>
+        <div><span>Average time</span><strong>O(n log n)</strong></div><div><span>Extra space</span><strong>O(1)**</strong></div>
+      </article>
+    </section>
+    <p class="footnote">* Quick Sort recursion is O(n) in the worst case. ** Typical in-place Heap Sort. Animation counters count algorithm operations, not wall-clock performance.</p>
+  </main>
+</body>
+</html>
